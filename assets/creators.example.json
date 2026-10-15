@@ -1,0 +1,248 @@
+{
+  "config": {
+    "brand": "8HOURS",
+    "atriaAccountId": "2974be40b9764b00bcd0c5c75878e4f7",
+    "lang": "en",
+    "currency": "€",
+    "salt": "CHANGE-ME-to-a-private-random-string",
+    "commissionRate": 0.1,
+    "commissionPlatform": "Trybe",
+    "showCommission": true,
+    "accent": "#E0A569",
+    "accentDark": "#8a5a33",
+    "accentInk": "#2a1708"
+  },
+  "updated": "Updated 7 Oct 2026 · last 90 days",
+  "angle": "Sleep to Perform",
+  "benchmarks": {
+    "hook": "29%",
+    "ctr": "1.7%",
+    "note": "Account averages — your reference point."
+  },
+  "shootBy": "Fri 17 Oct 2026",
+  "creators": [
+    {
+      "slug": "pete",
+      "name": "Pete Pastides",
+      "initials": "PP",
+      "role": "Performance & recovery",
+      "product": "8HOURS Sleep",
+      "status": {
+        "label": "Scaling",
+        "emoji": "🚀",
+        "class": "scale",
+        "note": "Top creator · best ROAS"
+      },
+      "totals": {
+        "adspend": "€2,771",
+        "gmv": "€3,331",
+        "roas": "1.20x",
+        "orders": "56",
+        "impressions": "53.0K",
+        "bestHook": "43%",
+        "benchNote": "Strong hook, well above the pack"
+      },
+      "ads": [
+        {
+          "code": "Sleep & Triathlon",
+          "statusLabel": "Active",
+          "statusClass": "scale",
+          "statusEmoji": "🚀",
+          "angle": "Talking to camera · Performance & recovery",
+          "hook": "It's quite incredible what this product actually does for me.",
+          "video": "c3d54b549d23813c3800852e69e0996a.mp4",
+          "poster": "e3904be803b4559758377e502527e656.jpg",
+          "adspend": "€858",
+          "gmv": "€1,663",
+          "roas": "1.94x",
+          "orders": "26",
+          "hookRate": "43%",
+          "ctr": "2.2%",
+          "hold": "14%"
+        }
+      ],
+      "callout": "Your Sleep & Triathlon video is the strongest creator ad in the account right now — the authority angle is exactly what's landing.",
+      "formula": [
+        {
+          "time": "0–5s",
+          "label": "Hook",
+          "quote": "It's quite incredible what this does for me — I'm Pete, 58, a GB triathlete."
+        },
+        {
+          "time": "5–20s",
+          "label": "Stakes",
+          "quote": "Performance is impossible without recovery."
+        },
+        {
+          "time": "20–35s",
+          "label": "Discovery",
+          "quote": "This was the fundamental thing I found to support my training."
+        },
+        {
+          "time": "35s+",
+          "label": "Proof",
+          "quote": "It knocks me out and gets me straight back to sleep."
+        }
+      ],
+      "formulaNote": "The authority angle is the engine. Keep leading with who you are.",
+      "keep": [
+        {
+          "item": "Lead with your credibility",
+          "why": "\"I'm 58, a GB triathlete\" earns trust in the first 5 seconds."
+        },
+        {
+          "item": "Name the specific mechanism",
+          "why": "\"Knocks me out, straight back to sleep\" is concrete and believable."
+        }
+      ],
+      "push": [
+        {
+          "item": "Tighten the first 3 seconds",
+          "why": "Get to the hook faster — cut any warm-up."
+        },
+        {
+          "item": "Shoot a 30s cut",
+          "why": "A shorter version to widen reach."
+        }
+      ],
+      "briefs": [
+        {
+          "num": "01 · Priority",
+          "tag": "Do first",
+          "hook": "I track my recovery score — and sleep is the one lever that moved it most.",
+          "tags": [
+            "📍 Training",
+            "⏱ Under 45s",
+            "📱 To camera"
+          ],
+          "why": "Doubles down on your performance angle with a data-led proof point."
+        },
+        {
+          "num": "02 · Variation",
+          "hook": "At 58, waking up at 1am was normal. Not any more.",
+          "tags": [
+            "📍 Bedroom",
+            "⏱ 30–40s",
+            "🎯 Age + recovery"
+          ],
+          "why": "Leans into the mid-sleep wake-up."
+        },
+        {
+          "num": "03 · Refresh",
+          "hook": "The one thing I'd never travel to a race without.",
+          "tags": [
+            "📍 Race prep",
+            "⏱ 35–45s",
+            "🔄 Fresh hook"
+          ],
+          "why": "Keeps the winner fresh so we can keep scaling."
+        }
+      ]
+    },
+    {
+      "slug": "ann",
+      "name": "Ann Keyserling",
+      "initials": "AK",
+      "role": "Sleep vs recovery",
+      "product": "8HOURS Sleep",
+      "status": {
+        "label": "Testing",
+        "emoji": "🧪",
+        "class": "test",
+        "note": "Best hook rate, scaling next"
+      },
+      "totals": {
+        "adspend": "€526",
+        "gmv": "€576",
+        "roas": "1.10x",
+        "orders": "10",
+        "impressions": "42.3K",
+        "bestHook": "44%",
+        "benchNote": "Highest hook rate of all creators"
+      },
+      "ads": [
+        {
+          "code": "Sleeping vs Recovering",
+          "statusLabel": "Active",
+          "statusClass": "test",
+          "statusEmoji": "🧪",
+          "angle": "Faceless / text · Problem reframe",
+          "hook": "You're sleeping — but you're not recovering.",
+          "video": "fbcd2ad724a9d1cb45d730c5b5bb5d5a.mp4",
+          "poster": "382d6151d903c98689405d013f095afd.jpg",
+          "adspend": "€526",
+          "gmv": "€576",
+          "roas": "1.10x",
+          "orders": "10",
+          "hookRate": "44%",
+          "ctr": "1.2%",
+          "hold": "1.5%"
+        }
+      ],
+      "callout": "Your hook is doing the heavy lifting — it stops 44% of people, the best in the account. The opportunity is holding them longer.",
+      "formula": [
+        {
+          "time": "0–3s",
+          "label": "Hook",
+          "quote": "You're sleeping — but you're not recovering."
+        },
+        {
+          "time": "3–8s",
+          "label": "Gap",
+          "quote": "There's a difference between hours in bed and real deep sleep."
+        },
+        {
+          "time": "8–14s",
+          "label": "Payoff",
+          "quote": "Wake up recovered, not just rested."
+        }
+      ],
+      "formulaNote": "A razor-sharp 14-second reframe. The hook is elite — the next version needs more room to breathe.",
+      "keep": [
+        {
+          "item": "The reframe hook",
+          "why": "\"Sleeping but not recovering\" is the strongest opener we have."
+        }
+      ],
+      "push": [
+        {
+          "item": "Extend to 25–35s",
+          "why": "At 14s there's no room to build — more story should lift the hold rate."
+        }
+      ],
+      "briefs": [
+        {
+          "num": "01 · Priority",
+          "tag": "Do first",
+          "hook": "You're sleeping — but you're not recovering.",
+          "tags": [
+            "📍 Faceless",
+            "⏱ 25–35s",
+            "📋 Reframe + proof"
+          ],
+          "why": "Same killer hook, but longer so we can scale the hold rate."
+        },
+        {
+          "num": "02 · Variation",
+          "hook": "Hours in bed ≠ deep sleep. Here's the difference.",
+          "tags": [
+            "📍 Text on screen",
+            "⏱ 30s",
+            "🎯 Education"
+          ],
+          "why": "Tests the education angle your hook hints at."
+        },
+        {
+          "num": "03 · New angle",
+          "hook": "I thought I slept fine. My recovery score said otherwise.",
+          "tags": [
+            "📍 Faceless",
+            "⏱ 30–40s",
+            "🔄 Data proof"
+          ],
+          "why": "Adds a concrete proof point."
+        }
+      ]
+    }
+  ]
+}
