@@ -1,426 +1,485 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset=utf8>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#FBF9F5">
 <title>8HOURS Creator Community</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23232323'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' fill='%23967BAC' font-family='Georgia'%3E8%3C/text%3E%3C/svg%3E">
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+
 <style>
-  :root{
-    --cream:#FBF9F5; --ink:#232323; --ink-soft:#56514c; --muted:#7a756f;
-    --purple:#967BAC; --purple-deep:#5f4d79;
-    --white:#FFFFFF; --line:#E7E2D9;
-    --green:#49E07D; --green-deep:#13301F;
-    --radius:14px; --pad:clamp(24px,6vw,96px);
+  :root {
+    --bg: #0a0a0a;
+    --bg-card: #111111;
+    --bg-elevated: #161616;
+    --bg-glass: rgba(255,255,255,0.03);
+    --fg: #f0ede8;
+    --fg-muted: #8a857d;
+    --fg-dim: #4a4540;
+    --accent: #c8b89a;
+    --accent-warm: #d4c5a9;
+    --accent-glow: rgba(200,184,154,0.12);
+    --accent-line: rgba(200,184,154,0.2);
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(200,184,154,0.3);
+    --tier-core: #8a857d;
+    --tier-elite: #c8b89a;
+    --tier-founding: #e8d5b0;
+    color-scheme: dark;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
-  @media (max-width:900px){html{scroll-snap-type:y proximity}}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
-  img{display:block;max-width:100%}
-  a{color:inherit}
-  .serif{font-family:"EB Garamond",Georgia,"Times New Roman",serif}
-  .section{min-height:100vh;min-height:100svh;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(88px,12vh,120px) var(--pad) clamp(56px,8vh,80px);overflow:hidden}
-  .section.dark{background:var(--ink);color:var(--cream)}
-  .wrap{width:100%;max-width:1180px;margin:0 auto}
 
-  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:18px}
-  h1,h2{font-weight:500;line-height:1.05;letter-spacing:-.01em}
-  h1{font-size:clamp(36px,5.4vw,64px)}
-  h2{font-size:clamp(32px,4.6vw,52px);margin-bottom:clamp(18px,3vh,28px)}
-  .lede{font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);max-width:620px}
-  .dark .lede{color:#cfcbc3}
-  em.accent{font-style:italic;color:var(--purple)}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* top bar */
-  .topbar{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);pointer-events:none}
-  .topbar .wm{font-weight:800;letter-spacing:.06em;font-size:15px;pointer-events:auto}
-  .dots{display:flex;gap:7px;pointer-events:auto}
-  .dot{width:6px;height:6px;border-radius:50%;background:rgba(35,35,35,.22);border:0;cursor:pointer;padding:0;transition:background .2s,transform .2s}
-  .dot.active{background:var(--purple);transform:scale(1.4)}
-  .progress{position:fixed;top:0;left:0;height:3px;background:var(--purple);z-index:50;width:0%;transition:width .1s linear}
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+  }
 
-  /* number watermark */
-  .secnum{position:absolute;right:clamp(16px,4vw,48px);bottom:clamp(8px,2vh,24px);font-family:"EB Garamond",serif;font-size:clamp(70px,11vw,160px);font-weight:500;color:rgba(35,35,35,.06);line-height:1;pointer-events:none}
-  .dark .secnum{color:rgba(255,255,255,.06)}
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100%;
+    padding-left: max(0px, env(safe-area-inset-left, 0px));
+    padding-right: max(0px, env(safe-area-inset-right, 0px));
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
 
-  /* hero */
-  .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.15),rgba(10,10,10,.75)),url('assets/hero.png') center/cover no-repeat;filter:grayscale(.15)}
-  .hero-inner{position:relative;z-index:2;color:#fff;text-align:center;max-width:760px;margin:0 auto}
-  .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 18px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:28px}
-  .hero-inner h1{font-size:clamp(38px,7vw,78px)}
-  .hero-inner .lede{color:#e7e4df;max-width:600px;margin:22px auto 0}
-  .hero-foot{margin-top:30px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#cfc9c0}
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: max(0px, env(safe-area-inset-left, 0px));
+    right: max(0px, env(safe-area-inset-right, 0px));
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px max(20px, env(safe-area-inset-right, 0px)) 14px max(20px, env(safe-area-inset-left, 0px));
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
 
-  /* brand strip */
-  .brand-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px;max-width:760px}
-  @media (max-width:760px){.brand-pillars{grid-template-columns:1fr}}
-  .pillar h3{font-size:16px;font-weight:700;margin-bottom:8px}
-  .pillar p{font-size:14.5px;color:var(--ink-soft)}
-  .featured{margin-top:44px}
-  .featured .lbl{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-  .featured .names{display:flex;gap:28px;flex-wrap:wrap;font-weight:600;color:var(--ink-soft);font-size:14.5px}
-  .stats-row{display:flex;gap:40px;flex-wrap:wrap;margin-top:34px}
-  .stat-block .num{font-family:"EB Garamond",serif;font-size:28px;color:var(--ink)}
-  .stat-block .num .star{color:var(--purple)}
-  .stat-block p{font-size:13px;color:var(--muted);margin-top:2px}
-  .brand-photo{margin-top:46px;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/8;background:#0c0c10 url('assets/product-sleep.jpg') center/cover no-repeat}
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--fg);
+    text-transform: uppercase;
+  }
 
-  /* benefit cards (section 02 — expanded) */
-  .lede-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vh,44px)}
-  .benefits-note{font-size:13.5px;color:var(--muted);max-width:280px}
-  .benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media (max-width:820px){.benefit-grid{grid-template-columns:1fr}}
-  .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;display:flex;flex-direction:column;gap:12px}
-  .card .tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple)}
-  .card h3{font-family:"EB Garamond",serif;font-weight:500;font-size:21px}
-  .card p{font-size:14.5px;color:var(--ink-soft)}
-  .card ul{margin-top:2px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:7px}
-  .card ul li{font-size:13.5px;color:var(--ink-soft);padding-left:17px;position:relative}
-  .card ul li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--purple);opacity:.55}
+  .nav-logo span { color: var(--accent); }
 
-  /* numbered rows (03, 06) */
-  .rows{display:flex;flex-direction:column;gap:14px}
-  .row{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:20px 26px;display:flex;gap:18px;align-items:flex-start}
-  .dark .row{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
-  .row .num{font-family:"EB Garamond",serif;font-size:20px;color:var(--purple);min-width:26px}
-  .row h4{font-weight:700;font-size:15.5px;margin-bottom:4px}
-  .row p{font-size:14px;color:var(--ink-soft)}
-  .dark .row p{color:#c9c5bd}
+  .nav-dots { display: flex; gap: 6px; align-items: center; }
 
-  /* content ideas (04) */
-  .ideas-photo{border-radius:var(--radius);overflow:hidden;aspect-ratio:21/9;background:#0c0c10 url('assets/product-rise.jpg') center/cover no-repeat;margin-top:36px}
-  .idea-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
-  @media (max-width:760px){.idea-cols{grid-template-columns:1fr}}
-  .idea-cols h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:16px}
-  .idea-item{padding:14px 0;border-bottom:1px solid var(--line)}
-  .idea-item:last-child{border-bottom:0}
-  .idea-item b{display:block;font-size:15.5px;margin-bottom:3px}
-  .idea-item span{font-size:13.5px;color:var(--ink-soft)}
+  .nav-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--fg-dim); cursor: pointer;
+    transition: all 0.3s ease; border: none; padding: 0;
+  }
 
-  /* rhythm timeline (05) */
-  .rhythm{display:flex;flex-direction:column;gap:0;margin-top:10px}
-  .rhythm-item{display:grid;grid-template-columns:130px 1fr;gap:22px;padding:22px 0;border-bottom:1px solid var(--line)}
-  .rhythm-item:last-child{border-bottom:0}
-  @media (max-width:640px){.rhythm-item{grid-template-columns:1fr}}
-  .rhythm-item .freq{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);align-self:start;padding-top:3px}
-  .rhythm-item h4{font-weight:700;font-size:16.5px;margin-bottom:4px}
-  .rhythm-item p{font-size:14px;color:var(--ink-soft)}
+  .nav-dot.active { background: var(--accent); transform: scale(1.4); }
 
-  /* metrics (07) */
-  .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
-  @media (max-width:760px){.metric-grid{grid-template-columns:repeat(2,1fr)}}
-  .metric{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:20px}
-  .metric .k{font-family:"EB Garamond",serif;font-size:15px}
-  .check-list{margin-top:36px;display:flex;flex-direction:column;gap:12px;max-width:620px}
-  .check-list .ci{display:flex;gap:12px;font-size:15px;color:#d8d4cc}
-  .check-list .ci::before{content:"→";color:var(--purple)}
+  /* ── SECTIONS ── */
+  section {
+    min-height: 100svh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px max(24px, env(safe-area-inset-right, 16px)) 48px max(24px, env(safe-area-inset-left, 16px));
+    position: relative;
+    overflow: hidden;
+  }
 
-  /* faq (08) */
-  .faq{display:flex;flex-direction:column}
-  .faq-item{padding:22px 0;border-bottom:1px solid var(--line)}
-  .faq-item:last-child{border-bottom:0}
-  .faq-item h4{font-weight:700;font-size:16px;margin-bottom:6px}
-  .faq-item p{font-size:14.5px;color:var(--ink-soft)}
+  /* ── HERO ── */
+  #hero {
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,184,154,0.07) 0%, transparent 70%), var(--bg);
+    text-align: center;
+    align-items: center;
+    padding-top: 96px;
+  }
 
-  /* final CTA */
-  .cta-wrap{position:relative;z-index:2;text-align:center;max-width:620px;margin:0 auto}
-  .cta-wrap h2{font-size:clamp(36px,6vw,56px)}
-  .cta-wrap .lede{margin:20px auto 0}
-  .cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--green-deep);color:var(--green);border:1px solid rgba(73,224,125,.35);border-radius:999px;padding:16px 30px;font-weight:700;font-size:16px;text-decoration:none;margin-top:30px}
-  .cta-small{margin-top:26px;font-size:13px;color:#aba6a0;max-width:420px;margin-left:auto;margin-right:auto}
-  .cta-bg-glow{position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 100%,rgba(150,123,172,.25),transparent 70%)}
+  .hero-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--accent-line);
+  }
+
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(38px, 10vw, 64px);
+    font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
+    margin-bottom: 8px; text-wrap: balance;
+  }
+
+  .hero-title .line2 { color: var(--accent); display: block; }
+
+  .hero-sub {
+    font-size: 15px; color: var(--fg-muted); max-width: 300px;
+    margin: 0 auto 24px; line-height: 1.65; text-wrap: balance;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg-glass); border: 1px solid var(--accent-line);
+    border-radius: 100px; padding: 8px 18px; font-size: 12px;
+    color: var(--accent-warm); font-weight: 500; letter-spacing: 0.03em;
+  }
+
+  .hero-badge-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+
+  .trust-row {
+    display: flex; align-items: center; justify-content: center; gap: 18px;
+    flex-wrap: wrap; margin: 26px 0 8px; font-family: 'Space Grotesk', sans-serif;
+  }
+  .trust-stat { font-size: 13px; color: var(--fg-muted); }
+  .trust-stat b { color: var(--accent-warm); font-weight: 600; }
+  .trust-press { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-dim); margin-top: 14px; }
+  .trust-press span { margin: 0 8px; }
+
+  .scroll-cue {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--fg-dim); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .scroll-arrow {
+    width: 20px; height: 20px; border-right: 1.5px solid var(--fg-dim); border-bottom: 1.5px solid var(--fg-dim);
+    transform: rotate(45deg); animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4} 50%{transform:rotate(45deg) translate(3px,3px);opacity:1} }
+
+  /* ── SECTION HEADER ── */
+  .section-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(26px, 7vw, 40px);
+    font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 10px; text-wrap: balance;
+  }
+  .section-desc { font-size: 14px; color: var(--fg-muted); max-width: 340px; line-height: 1.65; margin-bottom: 28px; }
+
+  /* ── CARDS ── */
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: border-color 0.3s; }
+  .card:hover { border-color: var(--border-hover); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .card-label { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--fg); margin-bottom: 5px; letter-spacing: 0.01em; }
+  .card-body { font-size: 13px; color: var(--fg-muted); line-height: 1.6; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid-1 { display: flex; flex-direction: column; gap: 10px; }
+
+  /* ── STEP LIST ── */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); min-width: 28px; padding-top: 2px; letter-spacing: 0.08em; }
+  .step-title { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--fg); margin-bottom: 3px; }
+  .step-body { font-size: 13px; color: var(--fg-muted); line-height: 1.6; }
+
+  /* ── CADENCE ── */
+  .cadence-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .cadence-pill { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 100px; padding: 5px 14px; font-size: 11px; font-weight: 600; color: var(--accent); font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.05em; white-space: nowrap; }
+  .cadence-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .cadence-item:last-child { border-bottom: none; }
+  .cadence-emoji { font-size: 18px; min-width: 28px; padding-top: 1px; }
+  .cadence-title { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--fg); margin-bottom: 2px; }
+  .cadence-body { font-size: 12px; color: var(--fg-muted); line-height: 1.55; }
+
+  /* ── KPI METRICS ── */
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .metric { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .metric-value { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--accent); display: block; margin-bottom: 4px; line-height: 1; }
+  .metric-label { font-size: 11px; color: var(--fg-muted); line-height: 1.4; }
+
+  /* ── THEMES ── */
+  .theme-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; font-size: 12px; color: var(--fg-muted); margin: 4px 4px 4px 0; transition: all 0.2s; }
+  .theme-tag:hover { border-color: var(--border-hover); color: var(--fg); }
+  .theme-tags { display: flex; flex-wrap: wrap; margin-bottom: 20px; }
+
+  /* ── TIER SYSTEM (exclusivity benefits) ── */
+  #levels { background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(200,184,154,0.05) 0%, transparent 70%), var(--bg); }
+  .tier-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .tier-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+  .tier-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--tier-color, var(--fg-dim)); }
+  .tier-card.core { --tier-color: var(--tier-core); }
+  .tier-card.elite { --tier-color: var(--tier-elite); border-color: rgba(200,184,154,0.15); }
+  .tier-card.founding { --tier-color: var(--tier-founding); border-color: rgba(232,213,176,0.25); background: linear-gradient(135deg, rgba(232,213,176,0.04) 0%, var(--bg-card) 60%); }
+  .tier-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .tier-name { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .tier-card.core .tier-name { color: var(--tier-core); }
+  .tier-card.elite .tier-name { color: var(--tier-elite); }
+  .tier-card.founding .tier-name { color: var(--tier-founding); }
+  .tier-badge { font-size: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; }
+  .tier-card.core .tier-badge { background: rgba(138,133,125,0.15); color: var(--tier-core); }
+  .tier-card.elite .tier-badge { background: rgba(200,184,154,0.12); color: var(--tier-elite); }
+  .tier-card.founding .tier-badge { background: rgba(232,213,176,0.12); color: var(--tier-founding); }
+  .tier-req { font-size: 11px; color: var(--fg-dim); margin-bottom: 10px; letter-spacing: 0.03em; }
+  .tier-perks { display: flex; flex-direction: column; gap: 5px; }
+  .tier-perk { font-size: 12px; color: var(--fg-muted); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+  .tier-perk::before { content: '→'; font-size: 10px; color: var(--accent); padding-top: 2px; flex-shrink: 0; }
+
+  /* ── MILESTONE BADGES ── */
+  .milestones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .milestone { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 6px 11px; font-size: 11px; color: var(--fg-muted); font-family: 'Space Grotesk', sans-serif; font-weight: 500; letter-spacing: 0.03em; }
+  .milestone-emoji { font-size: 13px; }
+
+  /* ── FINAL CTA ── */
+  #cta { background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(200,184,154,0.06) 0%, transparent 70%), var(--bg); text-align: center; align-items: center; }
+  .cta-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 8vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; text-wrap: balance; }
+  .cta-title em { font-style: normal; color: var(--accent); }
+  .cta-desc { font-size: 14px; color: var(--fg-muted); max-width: 300px; margin: 0 auto 28px; line-height: 1.65; }
+  .cta-wa { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.25); border-radius: 100px; padding: 14px 28px; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #25D366; max-width: 280px; margin: 0 auto 20px; }
+  .cta-fine { font-size: 11px; color: var(--fg-dim); max-width: 260px; margin: 0 auto; line-height: 1.6; }
+
+  .divider { width: 32px; height: 1px; background: var(--accent-line); margin: 20px 0; }
+  .tag { display: inline-block; background: var(--accent-glow); border: 1px solid var(--accent-line); border-radius: 100px; padding: 3px 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+
+  .progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 200; transition: width 0.3s ease; }
+  .bg-num { position: absolute; right: 16px; bottom: 20px; font-family: 'Space Grotesk', sans-serif; font-size: 100px; font-weight: 800; color: rgba(255,255,255,0.025); line-height: 1; pointer-events: none; user-select: none; }
 </style>
-</head>
-<body>
 
 <div class="progress" id="progress"></div>
-<div class="topbar">
-  <div class="wm" id="wm">8HOURS</div>
-  <div class="dots" id="dots"></div>
-</div>
 
-<!-- HERO -->
-<section class="section hero" id="s0">
-  <div class="hero-bg"></div>
-  <div class="hero-inner">
-    <span class="badge">Private Creator Access</span>
-    <h1 class="serif">Make better videos. <em class="accent">Together.</em></h1>
-    <p class="lede">You have been hand-picked for the first 8HOURS creator inner circle. This is where the real edge is built.</p>
-    <p class="hero-foot">Exclusive access · First cohort</p>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">8<span>HOURS</span></div>
+  <div class="nav-dots" id="navDots"></div>
+</nav>
+
+<!-- 1. HERO (+ trust stats, kept short) -->
+<section id="hero">
+  <div class="hero-eyebrow">Private Creator Access</div>
+  <h1 class="hero-title">Make better<br><span class="line2">videos. Together.</span></h1>
+  <p class="hero-sub">You've been hand-picked for 8HOURS' first creator inner circle. This is where the real edge is built.</p>
+  <div class="hero-badge"><div class="hero-badge-dot"></div>Exclusive access · First cohort</div>
+  <div class="trust-row">
+    <span class="trust-stat">★ <b>4.8</b> · 415 reviews — Sleep & Recovery</span>
+    <span class="trust-stat">★ <b>4.7</b> · 42 reviews — Cognition & Performance</span>
   </div>
+  <div class="trust-press">Men's Health <span>·</span> The Wall Street Journal <span>·</span> The Guardian</div>
+  <div class="scroll-cue"><div class="scroll-arrow"></div></div>
+  <div class="bg-num">01</div>
 </section>
 
-<!-- 01 — THE BRAND -->
-<section class="section" id="s1">
-  <div class="wrap">
-    <div class="eyebrow">01 — The brand you represent</div>
-    <h2 class="serif">Europe's #1 sleep performance brand.</h2>
-    <p class="lede">Rooted in science, proven in practice. When you film for 8HOURS, you are putting your name next to a brand built to last.</p>
-    <div class="brand-pillars">
-      <div class="pillar"><h3>Rooted in science</h3><p>Clinically-dosed formulas, triple lab-tested and published. No proprietary blends.</p></div>
-      <div class="pillar"><h3>Athlete-grade</h3><p>Informed Sport certified and trusted by people who perform for a living.</p></div>
-      <div class="pillar"><h3>Premium & honest</h3><p>Calm, confident, no hype. We never promise miracles — and neither should your videos.</p></div>
-    </div>
-    <div class="stats-row">
-      <div class="stat-block"><div class="num"><span class="star">★</span> 4.8 · 415 reviews</div><p>SLEEP — Informed Sport + NZVT Certified</p></div>
-      <div class="stat-block"><div class="num"><span class="star">★</span> 4.7 · 42 reviews</div><p>Cognition & Performance — NZVT Certified</p></div>
-    </div>
-    <div class="featured">
-      <div class="lbl">As featured in</div>
-      <div class="names"><span>Men's Health</span><span>The Wall Street Journal</span><span>The Guardian</span></div>
-    </div>
-    <div class="brand-photo"></div>
+<!-- 2. WHAT YOU GET -->
+<section id="why">
+  <div class="section-num">01 — What you get</div>
+  <h2 class="section-title">More than a<br>WhatsApp group.</h2>
+  <p class="section-desc">Your personal UGC school — real data, real feedback, real rewards.</p>
+
+  <div class="grid-2">
+    <div class="card"><span class="card-icon">📊</span><div class="card-label">Your personal report</div><div class="card-body">Monthly breakdown — your videos, sales, commissions, what's working.</div></div>
+    <div class="card"><span class="card-icon">🎯</span><div class="card-label">Biweekly brief</div><div class="card-body">Fresh angles and hooks every two weeks. Ready to film.</div></div>
+    <div class="card"><span class="card-icon">🎬</span><div class="card-label">Video teardowns</div><div class="card-body">We break down winning videos — why the hook worked. Steal the structure.</div></div>
+    <div class="card"><span class="card-icon">🏆</span><div class="card-label">Monthly challenges</div><div class="card-body">Best hook, most creative concept, top earner. Real perks, not just praise.</div></div>
+    <div class="card"><span class="card-icon">📦</span><div class="card-label">Early product drops</div><div class="card-body">First cohort gets new 8HOURS products before anyone else. Film it first.</div></div>
+    <div class="card"><span class="card-icon">📞</span><div class="card-label">1:1 when you need it</div><div class="card-body">Stuck, or not seeing results? Book a quick call. No group chat needed.</div></div>
   </div>
-  <div class="secnum">01</div>
+  <div class="bg-num">02</div>
 </section>
 
-<!-- 02 — WHAT YOU GET (expanded) -->
-<section class="section" id="s2">
-  <div class="wrap">
-    <div class="eyebrow">02 — What you get</div>
-    <div class="lede-row">
-      <div>
-        <h2 class="serif">More than a WhatsApp group.</h2>
-        <p class="lede">Think of it as your personal UGC school — with real data, real feedback and real people who want you to win. Six things are working for you behind the scenes, every single week, so your content (and your earnings) keep improving instead of plateauing.</p>
-      </div>
-      <p class="benefits-note">Nothing here is generic. Every brief, report and piece of feedback is built from your own numbers and the brand's real performance data.</p>
-    </div>
-    <div class="benefit-grid">
-      <div class="card">
-        <span class="tag">Report</span>
-        <h3 class="serif">Your monthly report</h3>
-        <p>No more guessing whether your content is working. Every month you get a private breakdown of your own numbers — videos posted, sales your content drove, the commission you've earned, and which video performed best. It always ends with one clear thing to try next.</p>
-        <ul>
-          <li>Views & sales per video, side by side</li>
-          <li>Your commission, broken down</li>
-          <li>Your top hook of the month</li>
-          <li>One concrete action for next month</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Briefs</span>
-        <h3 class="serif">Biweekly brief</h3>
-        <p>Every two weeks a brief lands with two or three ready-to-film angles and hooks, pulled from what is actually converting right now — not random ideas. Open it, pick an angle, start filming the same day. No blank-page stress, ever.</p>
-        <ul>
-          <li>Fresh angle + hooks every 2 weeks</li>
-          <li>Based on real, current performance data</li>
-          <li>Filming tips included so you nail the take</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Feedback</span>
-        <h3 class="serif">Video feedback</h3>
-        <p>Post your draft before you submit it to Trybe and get honest, specific notes back the same day — what is working, what isn't, and the one tweak that usually matters most (the hook, the pacing, the CTA). Small fixes before posting are often the difference between a video that flops and one that sells.</p>
-        <ul>
-          <li>Same-day review, every time</li>
-          <li>Specific notes, never generic praise</li>
-          <li>Catch issues before they cost you views</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Challenges</span>
-        <h3 class="serif">Creator challenges</h3>
-        <p>Every month we run a mini-competition inside the group — best hook, most views, top earner — with real rewards on the line, not just bragging rights. It's a fun way to push your content further and get noticed (and paid) for it.</p>
-        <ul>
-          <li>A new theme every month</li>
-          <li>Real prizes: product, bonuses, perks</li>
-          <li>Winners get highlighted to the whole group</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">1:1 Support</span>
-        <h3 class="serif">1:1 when you need it</h3>
-        <p>Stuck on a concept, or not seeing the results you expected? Book a short call directly with us — no group chat required. It's a direct line to the people who know exactly what's converting for 8HOURS right now.</p>
-        <ul>
-          <li>Book directly, no middleman</li>
-          <li>Talk through a concept or a stuck video</li>
-          <li>As often as you genuinely need it</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Intel</span>
-        <h3 class="serif">Insider knowledge</h3>
-        <p>We watch what the top-performing creators in the program are doing — which angles, formats and filming choices are actually driving sales — and share it with the whole group. You get the same playbook the best creators are already using, straight from the data.</p>
-        <ul>
-          <li>Real data, not guesses</li>
-          <li>Angles, formats and filming tips</li>
-          <li>Shared as soon as we spot a pattern</li>
-        </ul>
-      </div>
-    </div>
+<!-- 3. HOW TO GET THE MOST -->
+<section id="join">
+  <div class="section-num">02 — How to get the most out of this</div>
+  <h2 class="section-title">You're in.<br>Here's how it works.</h2>
+  <p class="section-desc">A few habits that separate creators who level up fast.</p>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div><div class="step-title">Introduce yourself</div><div class="step-body">What you create, which product you've filmed. Faster, more relevant feedback.</div></div></div>
+    <div class="step"><div class="step-num">02</div><div><div class="step-title">Use the biweekly brief</div><div class="step-body">Even if you don't use it directly, it sparks the next idea. Creators who use it earn more.</div></div></div>
+    <div class="step"><div class="step-num">03</div><div><div class="step-title">Post your draft before uploading</div><div class="step-body">Share in the group before submitting to Trybe. Same-day review.</div></div></div>
+    <div class="step"><div class="step-num">04</div><div><div class="step-title">Ask anything</div><div class="step-body">Hook not landing? Ask in the group — that's what it's for.</div></div></div>
   </div>
-  <div class="secnum">02</div>
+  <div class="bg-num">03</div>
 </section>
 
-<!-- 03 — HOW TO GET THE MOST -->
-<section class="section" id="s3">
-  <div class="wrap">
-    <div class="eyebrow">03 — How to get the most out of this</div>
-    <h2 class="serif">You are in. Here is how it works.</h2>
-    <p class="lede">A few habits that make the difference between getting real value and missing out.</p>
-    <div class="rows">
-      <div class="row"><span class="num serif">01</span><div><h4>Introduce yourself</h4><p>Drop a message in the group — what you create and what product you have filmed so far. It helps us get you the right briefs faster.</p></div></div>
-      <div class="row"><span class="num serif">02</span><div><h4>Use the brief</h4><p>Every two weeks we share a fresh angle. Even if you do not use it directly, it will spark ideas for your own content.</p></div></div>
-      <div class="row"><span class="num serif">03</span><div><h4>Post your draft before uploading</h4><p>Share your video in the group before submitting to Trybe. We review it the same day — small tweaks often mean a much stronger result.</p></div></div>
-      <div class="row"><span class="num serif">04</span><div><h4>Ask anything</h4><p>Hook not landing? Not sure which product to feature? Ask in the group. That is what it is for.</p></div></div>
-    </div>
+<!-- 4. CONTENT IDEAS -->
+<section id="content">
+  <div class="section-num">03 — Content ideas</div>
+  <h2 class="section-title">What to film.</h2>
+  <p class="section-desc">Fresh angles, hooks and concepts — you'll never run out of ideas.</p>
+
+  <div class="theme-tags">
+    <div class="theme-tag">⚡ Performance & recovery</div>
+    <div class="theme-tag">🌙 Night routine</div>
+    <div class="theme-tag">🛌 Sleeping vs recovering</div>
+    <div class="theme-tag">☀️ Mornings without crash</div>
+    <div class="theme-tag">🍹 Sleep cocktail</div>
+    <div class="theme-tag">🔬 Science explainer</div>
+    <div class="theme-tag">📉 Cortisol & sleepmaxxing</div>
+    <div class="theme-tag">🧩 The missing piece</div>
   </div>
-  <div class="secnum">03</div>
+
+  <div class="section-num" style="margin-bottom:10px;">Viral formats we love</div>
+  <div class="grid-1">
+    <div class="card" style="padding:14px 18px; display:flex; align-items:center; gap:12px;"><span style="font-size:18px;">🏆</span><div><div class="card-label" style="margin-bottom:0;">Rankings & controversies</div><div class="card-body">"Ranking 8 sleep supplements so you don't have to…"</div></div></div>
+    <div class="card" style="padding:14px 18px; display:flex; align-items:center; gap:12px;"><span style="font-size:18px;">📅</span><div><div class="card-label" style="margin-bottom:0;">Day 1 vs Day 30</div><div class="card-body">Before/after transformation content. Always converts.</div></div></div>
+    <div class="card" style="padding:14px 18px; display:flex; align-items:center; gap:12px;"><span style="font-size:18px;">😴</span><div><div class="card-label" style="margin-bottom:0;">3AM wake-up story</div><div class="card-body">The relatable scroll-stopper for anyone with sleep issues.</div></div></div>
+  </div>
+  <div class="bg-num">04</div>
 </section>
 
-<!-- 04 — CONTENT IDEAS -->
-<section class="section" id="s4">
-  <div class="wrap">
-    <div class="eyebrow">04 — Content ideas</div>
-    <h2 class="serif">What to film.</h2>
-    <p class="lede">We regularly share fresh angles, hooks and concepts, so you never run out of ideas.</p>
-    <div class="ideas-photo"></div>
-    <div class="idea-cols">
-      <div>
-        <h4>Performance & recovery</h4>
-        <div class="idea-item"><b>Night routine</b><span>What an actual wind-down looks like, product included.</span></div>
-        <div class="idea-item"><b>Sleeping vs recovering</b><span>The distinction most people never make.</span></div>
-        <div class="idea-item"><b>Mornings without the crash</b><span>The payoff angle — how the next day actually feels.</span></div>
-        <div class="idea-item"><b>The sleep cocktail</b><span>What's actually in it, explained simply.</span></div>
-        <div class="idea-item"><b>Science explainer</b><span>Break down one ingredient or mechanism in plain language.</span></div>
-        <div class="idea-item"><b>Cortisol & sleepmaxxing</b><span>Ride the trend, keep it honest.</span></div>
-        <div class="idea-item"><b>The missing piece</b><span>What everyone's routine forgets.</span></div>
+<!-- 5. CADENCE -->
+<section id="cadence">
+  <div class="section-num">04 — The rhythm</div>
+  <h2 class="section-title">Low noise.<br>High value.</h2>
+  <p class="section-desc">Everything in the group is there for a reason.</p>
+
+  <div class="cadence-row">
+    <div class="cadence-pill">Every 2 weeks</div>
+    <div class="cadence-pill">Monthly</div>
+    <div class="cadence-pill">On demand</div>
+  </div>
+
+  <div class="steps">
+    <div class="cadence-item"><div class="cadence-emoji">📋</div><div><div class="cadence-title">Biweekly brief</div><div class="cadence-body">A fresh angle, 2–3 hooks ready to film, a format tip.</div></div></div>
+    <div class="cadence-item"><div class="cadence-emoji">🎬</div><div><div class="cadence-title">Creator spotlight + teardown</div><div class="cadence-body">A winning video, broken down — hook, pacing, CTA.</div></div></div>
+    <div class="cadence-item"><div class="cadence-emoji">🏆</div><div><div class="cadence-title">Monthly challenge</div><div class="cadence-body">Best hook, top earner, most creative concept. Real perks.</div></div></div>
+    <div class="cadence-item"><div class="cadence-emoji">📊</div><div><div class="cadence-title">Your monthly report</div><div class="cadence-body">Private. Views, sales, commissions, top video, what's next.</div></div></div>
+    <div class="cadence-item"><div class="cadence-emoji">🎉</div><div><div class="cadence-title">Milestone moments</div><div class="cadence-body">First sale, 10th video, 3-month streak — celebrated in the group.</div></div></div>
+    <div class="cadence-item"><div class="cadence-emoji">🔁</div><div><div class="cadence-title">Feedback & 1:1 on demand</div><div class="cadence-body">Post a draft anytime, or book a quick 1:1.</div></div></div>
+  </div>
+  <div class="bg-num">05</div>
+</section>
+
+<!-- 6. HOW YOU LEVEL UP (private/exclusivity benefits) -->
+<section id="levels">
+  <div class="section-num">05 — How you level up</div>
+  <h2 class="section-title">Earn your<br>status.</h2>
+  <p class="section-desc">The more you create, the more you unlock. Not one-size-fits-all.</p>
+
+  <div class="tier-stack">
+    <div class="tier-card core">
+      <div class="tier-header"><div class="tier-name">Core</div><div class="tier-badge">Start here</div></div>
+      <div class="tier-req">Join the group · First submission</div>
+      <div class="tier-perks">
+        <div class="tier-perk">Biweekly brief + video feedback</div>
+        <div class="tier-perk">Monthly personal report</div>
+        <div class="tier-perk">Access to monthly challenges</div>
       </div>
-      <div>
-        <h4>Viral formats we love</h4>
-        <div class="idea-item"><b>Rankings & controversies</b><span>"Ranking 8 sleep supplements so you don't have to…"</span></div>
-        <div class="idea-item"><b>Day 1 vs Day 30</b><span>Before-and-after content. It always converts.</span></div>
-        <div class="idea-item"><b>The 3am wake-up story</b><span>The relatable scroll-stopper for anyone with sleep issues.</span></div>
+    </div>
+    <div class="tier-card elite">
+      <div class="tier-header"><div class="tier-name">Elite</div><div class="tier-badge">3+ videos · consistent</div></div>
+      <div class="tier-req">Post regularly for 60 days</div>
+      <div class="tier-perks">
+        <div class="tier-perk">Everything in Core</div>
+        <div class="tier-perk">Priority 1:1 feedback sessions</div>
+        <div class="tier-perk">Invite to brand strategy calls</div>
+        <div class="tier-perk">Early access to new briefs before the group</div>
+      </div>
+    </div>
+    <div class="tier-card founding">
+      <div class="tier-header"><div class="tier-name">Founding</div><div class="tier-badge">Top performers</div></div>
+      <div class="tier-req">Top earner · 90-day consistency streak</div>
+      <div class="tier-perks">
+        <div class="tier-perk">Everything in Elite</div>
+        <div class="tier-perk">Commission boost negotiated directly</div>
+        <div class="tier-perk">Free product every month — yours to keep</div>
+        <div class="tier-perk">New products before anyone — public or creators</div>
+        <div class="tier-perk">Co-create campaign angles with the team</div>
       </div>
     </div>
   </div>
-  <div class="secnum">04</div>
+
+  <div class="section-num" style="margin-bottom:10px; margin-top: 4px;">Milestones we celebrate</div>
+  <div class="milestones">
+    <div class="milestone"><span class="milestone-emoji">🎯</span> First sale</div>
+    <div class="milestone"><span class="milestone-emoji">🎬</span> 10th video</div>
+    <div class="milestone"><span class="milestone-emoji">🔥</span> 3-month streak</div>
+    <div class="milestone"><span class="milestone-emoji">💰</span> £1K earned</div>
+    <div class="milestone"><span class="milestone-emoji">📈</span> First ad winner</div>
+  </div>
+  <div class="bg-num">06</div>
 </section>
 
-<!-- 05 — THE RHYTHM -->
-<section class="section" id="s5">
-  <div class="wrap">
-    <div class="eyebrow">05 — The rhythm</div>
-    <h2 class="serif">Low noise. High value.</h2>
-    <p class="lede">Everything in the group is there for a reason. No spam, no fluff — and every touchpoint maps straight back to a benefit above.</p>
-    <div class="rhythm">
-      <div class="rhythm-item"><span class="freq">Every 2 weeks</span><div><h4>Biweekly brief</h4><p>Every two weeks: a fresh angle, two or three hooks ready to film, and a format tip. Your content calendar, basically done for you.</p></div></div>
-      <div class="rhythm-item"><span class="freq">Every 2 weeks</span><div><h4>Creator spotlight</h4><p>We break down a winning video — why the hook worked and what drove the sales. Steal the structure.</p></div></div>
-      <div class="rhythm-item"><span class="freq">Monthly</span><div><h4>Monthly challenge</h4><p>Best hook of the month, most creative concept, top earner — voted by the group. Winners get perks.</p></div></div>
-      <div class="rhythm-item"><span class="freq">Monthly</span><div><h4>Your monthly report</h4><p>Private. Just yours. Views, sales, commissions, top video — and what to do next to level up.</p></div></div>
-      <div class="rhythm-item"><span class="freq">On demand</span><div><h4>Feedback & 1:1 on demand</h4><p>Post a draft any time. Need more? Book a quick 1:1 and we will work through your content together.</p></div></div>
-    </div>
+<!-- 7. WHAT SUCCESS LOOKS LIKE -->
+<section id="success">
+  <div class="section-num">06 — How we'll know it's working</div>
+  <h2 class="section-title">What success<br>looks like.</h2>
+  <p class="section-desc">We track what matters. Real data, not guesses.</p>
+
+  <div class="metrics">
+    <div class="metric"><span class="metric-value">↑</span><div class="metric-label">Video output per creator</div></div>
+    <div class="metric"><span class="metric-value">↑</span><div class="metric-label">Trybe GMV per video</div></div>
+    <div class="metric"><span class="metric-value">↑</span><div class="metric-label">Average ad ROAS</div></div>
+    <div class="metric"><span class="metric-value">↑</span><div class="metric-label">Creator earnings</div></div>
   </div>
-  <div class="secnum">05</div>
+
+  <div class="divider"></div>
+  <div class="grid-1">
+    <div class="card" style="padding:14px 18px;"><div class="card-body">📊 Are community creators outperforming solo creators?</div></div>
+    <div class="card" style="padding:14px 18px;"><div class="card-body">💬 Is the group active and useful — or just noise?</div></div>
+    <div class="card" style="padding:14px 18px;"><div class="card-body">🔄 Are creators applying the briefs to their videos?</div></div>
+  </div>
+  <div class="bg-num">07</div>
 </section>
 
-<!-- 06 — HOUSE RULES -->
-<section class="section" id="s6">
-  <div class="wrap">
-    <div class="eyebrow">06 — Staying in the circle</div>
-    <h2 class="serif">A few house rules.</h2>
-    <p class="lede">This is a small, curated group. Keep these in mind and you will get the most out of it — and keep your place in it.</p>
-    <div class="rows">
-      <div class="row"><span class="num serif">01</span><div><h4>Film consistently</h4><p>Aim for a couple of videos a week. Momentum is where the results — and the commissions — come from.</p></div></div>
-      <div class="row"><span class="num serif">02</span><div><h4>Keep it honest</h4><p>Share your real experience. No medical claims, no miracle promises, no invented numbers. Show the product and tell the truth.</p></div></div>
-      <div class="row"><span class="num serif">03</span><div><h4>Protect the brand</h4><p>Premium and calm, never hypey. Match the 8HOURS tone — and skip "link in bio" style sell.</p></div></div>
-      <div class="row"><span class="num serif">04</span><div><h4>Lift the others</h4><p>Drop a comment on someone's draft, share what worked for you. We all rise faster together.</p></div></div>
-    </div>
+<!-- 8. CTA -->
+<section id="cta">
+  <div class="tag">Exclusive · First cohort · Core tier</div>
+  <h2 class="cta-title">You're already<br><em>in.</em></h2>
+  <p class="cta-desc">Just reply to this message and we'll add you to the group. No forms, no calls — you're already selected.</p>
+  <div class="cta-wa">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Reply to your invite message
   </div>
-  <div class="secnum">06</div>
-</section>
-
-<!-- 07 — WHAT SUCCESS LOOKS LIKE -->
-<section class="section dark" id="s7">
-  <div class="wrap">
-    <div class="eyebrow">07 — How we will know it is working</div>
-    <h2 class="serif">What success looks like.</h2>
-    <p class="lede">We track what matters. After 30 days you will have data on how your content is actually performing — not guesses.</p>
-    <div class="metric-grid">
-      <div class="metric"><div class="k serif">Video output</div>per creator</div>
-      <div class="metric"><div class="k serif">Trybe GMV</div>per video</div>
-      <div class="metric"><div class="k serif">Average</div>ad ROAS</div>
-      <div class="metric"><div class="k serif">Creator</div>earnings</div>
-    </div>
-    <div class="check-list">
-      <div class="ci">Are community creators outperforming solo creators?</div>
-      <div class="ci">Is the group active and useful, or just noise?</div>
-      <div class="ci">Are creators applying the briefs to their videos?</div>
-    </div>
-  </div>
-  <div class="secnum">07</div>
-</section>
-
-<!-- 08 — FAQ -->
-<section class="section" id="s8">
-  <div class="wrap">
-    <div class="eyebrow">08 — Good to know</div>
-    <h2 class="serif">Quick questions.</h2>
-    <div class="faq">
-      <div class="faq-item"><h4>What's actually in it for me?</h4><p>Faster-growing content (biweekly briefs + same-day feedback), a clear picture of your own numbers every month, real prizes through monthly challenges, direct access to the team, and the same insider playbook top creators use — on top of your commission on every sale.</p></div>
-      <div class="faq-item"><h4>How do I get paid?</h4><p>You earn a commission on every sale your videos drive, tracked through your personal Trybe link. The exact terms are in your creator agreement.</p></div>
-      <div class="faq-item"><h4>How often do briefs land?</h4><p>A fresh brief every two weeks, plus a creator spotlight and a monthly challenge. Low noise, high value.</p></div>
-      <div class="faq-item"><h4>Do I need to show my face?</h4><p>No. Hands-only and voice-over videos work brilliantly. Film the way you are most comfortable.</p></div>
-      <div class="faq-item"><h4>What should I film with?</h4><p>Your phone is enough. Vertical 9:16, good daylight and clean sound beat any fancy kit.</p></div>
-      <div class="faq-item"><h4>Where do I upload?</h4><p>Submit your finished videos in Trybe, as always. Post a draft in the group first if you would like feedback.</p></div>
-    </div>
-  </div>
-  <div class="secnum">08</div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="section dark" id="s9">
-  <div class="cta-bg-glow"></div>
-  <div class="cta-wrap">
-    <span class="badge" style="color:#fff">Exclusive · First cohort</span>
-    <h2 class="serif">You are already <em class="accent">in.</em></h2>
-    <p class="lede">Just reply to your invite message and we will add you to the group. That is it. No forms, no calls — you are already selected.</p>
-    <a class="cta-btn" href="#">💬 Reply to your invite message</a>
-    <p class="cta-small">This group is closed to the public. You were selected because your content stands out — only a handful of 8HOURS creators are getting this.</p>
-  </div>
-  <div class="secnum">09</div>
+  <p class="cta-fine">This group is closed to the public. You were selected because your content stands out — only a handful of 8HOURS creators are getting this.</p>
+  <div class="bg-num">08</div>
 </section>
 
 <script>
-  const sections = [...document.querySelectorAll('.section')];
-  const dotsEl = document.getElementById('dots');
-  sections.forEach((s,i)=>{
-    const b = document.createElement('button');
-    b.className = 'dot' + (i===0?' active':'');
-    b.setAttribute('aria-label','Go to section '+(i+1));
-    b.addEventListener('click',()=>s.scrollIntoView({behavior:'smooth'}));
-    dotsEl.appendChild(b);
-  });
-  const dots = [...dotsEl.children];
+  const sections = Array.from(document.querySelectorAll('section'));
+  const navDots = document.getElementById('navDots');
   const progress = document.getElementById('progress');
-  const wm = document.getElementById('wm');
 
-  function update(){
-    const scrollTop = window.scrollY;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    progress.style.width = (max>0 ? (scrollTop/max*100) : 0) + '%';
+  sections.forEach((s, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to section ' + (i + 1));
+    dot.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+    navDots.appendChild(dot);
+  });
 
-    let activeIdx = 0, closest = Infinity;
-    sections.forEach((s,i)=>{
-      const d = Math.abs(s.getBoundingClientRect().top);
-      if(d < closest){ closest = d; activeIdx = i; }
-    });
-    dots.forEach((d,i)=>d.classList.toggle('active', i===activeIdx));
-    const isDark = sections[activeIdx].classList.contains('dark') || activeIdx===0;
-    wm.style.color = isDark ? '#fff' : '#232323';
-    dots.forEach(d=>{ if(!d.classList.contains('active')) d.style.background = isDark ? 'rgba(255,255,255,.3)' : 'rgba(35,35,35,.22)'; });
-  }
-  window.addEventListener('scroll', update, {passive:true});
-  window.addEventListener('resize', update);
-  update();
+  const dots = navDots.querySelectorAll('.nav-dot');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (docH > 0 ? (scrollY / docH) * 100 : 0) + '%';
+        let activeIdx = 0;
+        sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) activeIdx = i; });
+        dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 </script>
 
-</body>
-</html>
+</body></html>
